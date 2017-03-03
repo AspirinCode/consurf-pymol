@@ -24,6 +24,7 @@ def parse_file(f):
 
 
 def colors(r=8, g=58, b=0):
+    # builds up a gradient of colors for each conservation score
     delta_r = float(255 - r) / 10.0
     delta_g = float(255 - g) / 10.0
     delta_b = float(255 - b) / 10.0
@@ -33,11 +34,14 @@ def colors(r=8, g=58, b=0):
 
 
 def main():
+    # We have to give names to our custom RGB colors in order to use them later
     for i, rgb in colors().items():
         cmd.set_color("consurf%d" % i, rgb)
     try:
         with open('consurf.grades') as f:
             for residue, score in parse_file(f):
+                # We specify the residue number and require that it be an amino acid,
+                # because otherwise some nucleic acids will get colored as well
                 cmd.select("sele", "resi %d & resn ala+arg+asn+asp+cys+glu+gln+gly+his+ile+leu+lys+met+phe+pro+ser+thr+trp+tyr+val" % residue)
                 color = "consurf%d" % score
                 cmd.color(color, "sele")
