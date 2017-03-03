@@ -1,8 +1,6 @@
 # ConSurf Pymol Colorizer 
 
-Takes the `consurf.grades` file from ConSurf and colors each amino acid in the reference protein according to its degree of conservation.
-
-Amino acids with insufficient data are colored as if they're not conserved at all.
+Takes the `consurf.grades` file from [ConSurf](http://consurf.tau.ac.il/2016/) and colors each amino acid in the reference protein according to its degree of conservation. Darker green residues are more highly conserved. Amino acids with insufficient data are colored as if they're not conserved at all. 
 
 ### Usage
 
